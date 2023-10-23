@@ -13,9 +13,15 @@ class CreateWorksTabel extends Migration
      */
     public function up()
     {
-        Schema::create('works_tabel', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('works', function (Blueprint $table) {
+            $table->id()->unique();
+            $table->numeric('start');
+            $table->numeric('end');
+            $table->numeric('time');
+            $table->integer('users_id')->foreign();
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
+
         });
     }
 
@@ -26,6 +32,6 @@ class CreateWorksTabel extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('works_tabel');
+        Schema::dropIfExists('works');
     }
 }

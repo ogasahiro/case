@@ -14,8 +14,12 @@ class CreateBreaksTable extends Migration
     public function up()
     {
         Schema::create('breaks', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id()->unique();
+            $table->numeric('start');
+            $table->numeric('end');
+            $table->integer('works_id')->foreign();
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
         });
     }
 
