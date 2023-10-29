@@ -25,10 +25,11 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:191'],
-         'email' => ['required', 'string', 'email', 'max:191'],
-         'pass' => ['required', 'numeric', 'string_between:8,15'],
+         'email' => ['required', 'string','unique','email', 'max:191'],
+         'pass' => ['required', 'string', 'string_between:8,15'],
         ];
     }
+    public function messages()
     {
         return [
             'name.required' => '名前を入力してください',
@@ -36,6 +37,7 @@ class RegisterRequest extends FormRequest
             'name.max' => '名前を191文字以下で入力してください',
             'email.required' => 'メールアドレスを入力してください',
             'email.string' => 'メールアドレスを文字列で入力してください',
+            'email.unique' => 'メールアドレスは重複不可です',
             'email.email' => '有効なメールアドレス形式を入力してください',
             'email.max' => 'メールアドレスを191文字以下で入力してください',
             'pass.required' => 'パスワードを入力してください',

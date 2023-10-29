@@ -10,7 +10,7 @@
   <div class="contact-form__heading">
     <h2>ログイン</h2>
   </div>
-  <form class="form" action="contacts/confirm" method="post">
+  <form class="form" action="users/destroy" method="post">
     @csrf
     <div class="form__group">
       <div class="form__group-title">
@@ -31,10 +31,10 @@
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="pass" name="pass" placeholder="パスワード" value="{{ old('pass') }}" />
+          <input type="password" name="password" placeholder="パスワード" />
         </div>
         <div class="form__error">
-          @error('pass')
+          @error('password')
           {{ $message }}
           @enderror
         </div>

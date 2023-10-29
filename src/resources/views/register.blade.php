@@ -10,7 +10,7 @@
   <div class="contact-form__heading">
     <h2>会員登録</h2>
   </div>
-  <form class="form" action="contacts/confirm" method="post">
+  <form class="form" action="users/store" method="post">
     @csrf
     <div class="form__group">
       <div class="form__group-content">
@@ -39,10 +39,10 @@
     <div class="form__group">
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="pass" name="pass" placeholder="パスワード" value="{{ old('pass') }}" />
+          <input type="password" name="password" placeholder="パスワード" />
         </div>
         <div class="form__error">
-          @error('pass')
+          @error('password')
           {{ $message }}
           @enderror
         </div>
@@ -51,10 +51,10 @@
     <div class="form__group">
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="pass" name="pass" placeholder="確認用パスワード" value="{{ old('pass') }}" />
+          <input type="password" name="password_confirmation" placeholder="確認用パスワード" />
         </div>
         <div class="form__error">
-          @error('pass')
+          @error('password')
           {{ $message }}
           @enderror
         </div>

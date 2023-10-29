@@ -20,9 +20,13 @@ use App\Http\Controllers\AuthenticatedSessionController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', [WorkController::class, 'index']);
-Route::post('/', [WorkController::class, 'store']);
 Route::get('/register', [RegisteredUserController::class, 'create']);
-Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::post('users/store', [RegisteredUserController::class, 'store']);
 Route::get('/login', [AuthenticatedSessionController::class, 'store']);
-Route::post('/login', [AuthenticatedSessionController::class, 'destroy']);
+Route::post('users/destroy', [AuthenticatedSessionController::class, 'destroy']);
+Route::get('/', [WorkController::class, 'index'])->name('login');
+Route::post('/workstart/{users_id}', [WorkController::class, 'workstart']);
+Route::post('/workend/{users_id}', [WorkController::class, 'workend']);
+Route::post('/breakstart/{works_id}', [WorkController::class, 'breakstart']);
+Route::post('/breakend/{works_id}', [WorkController::class, 'breakend']);
+Route::post('/attendance', [WorkController::class, 'attendance']);
