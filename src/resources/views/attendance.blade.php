@@ -1,68 +1,206 @@
-@extends('layouts.app')
+@extends('layouts.aap')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
 @section('content')
-<div class="category__alert">
-  @if (session('message'))
-  <div class="category__alert--success">
-    {{ session('message') }}
-  </div>
-  @endif
-  @if ($errors->any())
-  <div class="category__alert--danger">
-    <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-  @endif
-</div>
-<div class="category__content">
-<form class="create-form" action="/categories" method="post">
-     @csrf
-    <div class="create-form__item">
-    <input class="create-form__item-input" type="text" name="name" value="{{ old('name') }}">
-    </div>
-    <div class="create-form__button">
-      <button class="create-form__button-submit" type="submit">作成</button>
-    </div>
-  </form>
-  <div class="category-table">
-    <table class="category-table__inner">
-      <tr class="category-table__row">
-        <th class="category-table__header">category</th>
-      </tr>
-      @foreach ($categories as $category)
-      <tr class="category-table__row">
-        <td class="category-table__item">
-        <form class="update-form" action="/categories/update" method="post">
-     @method('PATCH')
-     @csrf
-            <div class="update-form__item">
-            <input class="update-form__item-input" type="text" name="name" value="{{ $category['name'] }}">
-     <input type="hidden" name="id" value="{{ $category['id'] }}">
-            </div>
-            <div class="update-form__button">
-              <button class="update-form__button-submit" type="submit">更新</button>
-            </div>
-          </form>
-        </td>
-        <td class="category-table__item">
-        <form class="delete-form" action="/categories/delete" method="post">
-   @method('DELETE')
-   @csrf
-            <div class="delete-form__button">
-            <input type="hidden" name="id" value="{{ $category['id'] }}">
-              <button class="delete-form__button-submit" type="submit">削除</button>
-            </div>
-          </form>
-        </td>
-      </tr>
-      @endforeach
+<div class="todo-table">
+    <table class="todo-table__inner">
+      <tr class="todo-table__row">
+       <th class="todo-table__header">
+         <span class="todo-table__header-span">名前</span>
+         <span class="todo-table__header-span">勤務開始</span> 
+         <span class="todo-table__header-span">勤務終了</span>
+         <span class="todo-table__header-span">休憩時間</span>
+         <span class="todo-table__header-span">勤務時間</span>
+       </th>
+       </tr>
+       <tr class="todo-table__row">
+         <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+       </tr>
+       <tr class="todo-table__row">
+         <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+       </tr>
+       <tr class="todo-table__row">
+         <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+       </tr>
+       <tr class="todo-table__row">
+         <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+       </tr>
+       <tr class="todo-table__row">
+         <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+          <td class="todo-table__item">
+             <form class="update-form">
+                <div class="update-form__item">
+                  <input class="update-form__item-input" type="text" name="content" value="test">
+               </div>
+             </form>
+          </td>
+       </tr>
     </table>
   </div>
 </div>

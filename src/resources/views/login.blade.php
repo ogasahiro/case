@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+<link rel="stylesheet" href="{{ asset('css/user.css') }}">
 @endsection
 
 @section('content')
-
 <div class="contact-form__content">
   <div class="contact-form__heading">
     <h2>ログイン</h2>
@@ -13,8 +12,6 @@
   <form class="form" action="users/destroy" method="post">
     @csrf
     <div class="form__group">
-      <div class="form__group-title">
-      </div>
       <div class="form__group-content">
         <div class="form__input--text">
           <input type="email" name="email" placeholder="メールアドレス" value="{{ old('email') }}" />
@@ -27,8 +24,6 @@
       </div>
     </div>
     <div class="form__group">
-      <div class="form__group-title">
-      </div>
       <div class="form__group-content">
         <div class="form__input--text">
           <input type="password" name="password" placeholder="パスワード" />
@@ -43,9 +38,11 @@
     <div class="form__button">
       <button class="form__button-submit" type="submit">ログイン</button>
     </div>
-    <div class="login">
+    <div class="login2">
        <p>アカウントお持ちでない方はこちらから</p>
-       <div class="p">会員登録</div>
+       <div class="p">
+         <a href="/register">会員登録</a>
+       </div>
      </div>
   </form>
 </div>

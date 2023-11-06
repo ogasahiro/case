@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorksTabel extends Migration
+class CreateWorksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class CreateWorksTabel extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id()->unique();
-            $table->numeric('workstart');
-            $table->numeric('workend');
-            $table->numeric('worktime');
+            $table->time('workstart');
+            $table->time('workend');
+            $table->date('worktime');
             $table->foreign('users_id')->constrained()->cascadeOnDelete();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();

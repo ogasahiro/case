@@ -24,9 +24,13 @@ Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('users/store', [RegisteredUserController::class, 'store']);
 Route::get('/login', [AuthenticatedSessionController::class, 'store']);
 Route::post('users/destroy', [AuthenticatedSessionController::class, 'destroy']);
-Route::get('/', [WorkController::class, 'index'])->name('login');
-Route::post('/workstart/{users_id}', [WorkController::class, 'workstart']);
-Route::post('/workend/{users_id}', [WorkController::class, 'workend']);
-Route::post('/breakstart/{works_id}', [WorkController::class, 'breakstart']);
-Route::post('/breakend/{works_id}', [WorkController::class, 'breakend']);
+
+Route::get('/', [WorkController::class, 'index']);
+Route::post('/workstart/{user_id}', [WorkController::class, 'workstart']);
+Route::post('/workend/{user_id}', [WorkController::class, 'workend']);
+Route::post('/breakstart/{work_id}', [WorkController::class, 'breakstart']);
+Route::post('/breakend/{work_id}', [WorkController::class, 'breakend']);
+Route::get('/attendance', [WorkController::class, 'attendance']);
 Route::post('/attendance', [WorkController::class, 'attendance']);
+
+

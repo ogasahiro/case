@@ -12,6 +12,6 @@ class RegisteredUserController extends Controller
     }
     public function store(Request $request){
         $users = $request->only(['name', 'email', 'password']);
-        return = $users;
+        User::create($user);
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+<link rel="stylesheet" href="{{ asset('css/user.css') }}">
 @endsection
 
 @section('content')
@@ -63,9 +63,11 @@
     <div class="form__button">
       <button class="form__button-submit" type="submit">会員登録</button>
     </div>
-    <div class="login">
+    <div class="login2">
        <p>アカウントお持ちの方はこちらから</p>
-       <div class="p">ログイン</div>
+       <div class="p">
+         <a href="/login">ログイン</a>
+       </div>
      </div>
   </form>
 </div>

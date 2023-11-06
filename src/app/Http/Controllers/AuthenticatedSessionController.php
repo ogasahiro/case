@@ -12,7 +12,7 @@ class AuthenticatedSessionController extends Controller
     }
     public function destroy(Request $request){
         $users = $request->only(['email', 'password']);
-        return view('index', compact('users'));
+        return view('index', compact('user'));
     }
 
 }

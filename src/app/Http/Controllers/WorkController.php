@@ -9,34 +9,56 @@ use App\Models\Breaks;
 
 class WorkController extends Controller
 {
-    public function index()
-  {
+    public function index(){
     return view('index');
   }
-  public function attendance()
-     {
-         $works = Work::all();
 
-         return view('attendance', compact('works'));
-     }
-     public function workstart(Request $request)
-{
-  $works = $request->only(['workstart']);
-  Work::create($works);
+    public function attendance(){
 
-  return redirect('/works')->with('message', 'カテゴリを作成しました');
-}
-public function update(CategoryRequest $request)
-{
-  $category = $request->only(['name']);
-  Category::find($request->id)->update($category);
+    return view('attendance');
+  }
 
-  return redirect('/categories')->with('message', 'カテゴリを更新しました');
-}
-public function destroy(Request $request)
-{
-  Category::find($request->id)->delete();
+    public function workstart(Request $request){
+  $work = $request->only(['workstart','worktime','user_id']);
+  $work -> workstart = Carbon::now()->format('H:i');
+  $work -> worktime = Carbon::now()->format('Y-m-d');
+  $work -> user_id = user::id();
+  $work -> save();
+  
+  return redirect('attendance', ['work' => $work]);
 
-  return redirect('/categories')->with('message', 'カテゴリを削除しました');
+}
+public function workend(Request $request){
+  $work = $request->only(['workend','user_id']);
+  $work -> workend = Carbon::now()->format('H:i');
+  $work -> user_id = user::id();
+  $work -> save();
+  
+  return redirect('attendance',['work' => $work]);
+}
+public function breakstart(Request $request){
+  $break = $request->only(['breakstart','breaktime','work_id']);
+  $break -> breakstart = Carbon::now()->format('H:i');
+  $break -> breaktime = Carbon::now()->format('Y-m-d');
+  $break -> work_id = work::id();
+  $break -> save();
+  
+  return redirect('attendance',['break' => $break]);
+}
+public function breakend(Request $request){
+  $break = $request->only(['breakend','work_id']);
+  $break -> breakend = Carbon::now()->format('H:i');
+  $break -> work_id = work::id();
+  $break -> save();
+  
+  return redirect('attendance',['break' => $break]);
 }
 }
+?>
+
+
+
+
+
+
+

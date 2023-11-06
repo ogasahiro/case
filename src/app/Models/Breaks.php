@@ -12,11 +12,11 @@ class Breaks extends Model
         'id',
         'breakstart',
         'breakend',
-        'works_id',
+        'work_id',
 
     ];
-    public function works()
+    public function work()
    {
-       return $this->belongsTo(Works::class);
+       return $this->belongsTo(Work::class);
    }
 }

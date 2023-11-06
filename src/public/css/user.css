@@ -36,7 +36,7 @@
   .form__input--text input,
   .form__input--textarea textarea {
     padding: 10px;
-    width: 600px;
+    width: 30%;
     border: 1px solid #ddd;
     border-radius: 3px;
   
@@ -66,13 +66,26 @@
     cursor: pointer;
   }
   main{
-    background-color: rgb(251, 216, 245);
+    background-color: rgb(255, 238, 252);
   }
-  .login{
+  .login2{
     font-size: 8px;
   }
   .p{
     color: #3c00ff;
   }
 
+ footer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    bottom:0;
+    font-weight: bold;
+ }
+ .login{
+  text-decoration: none;
+ }
+ .register{
+  text-decoration: none;
+ }
   

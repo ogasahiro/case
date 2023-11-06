@@ -23,6 +23,9 @@
   <main>
     @yield('content')
   </main>
+  <footer>
+                <small class="text">Atte,inc</small>
+  </footer>
 </body>
 
 </html>
