@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkController;
-use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\RegisteredUserController;
 
 
 /*
@@ -20,17 +20,21 @@ use App\Http\Controllers\AuthenticatedSessionController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/register', [RegisteredUserController::class, 'create']);
-Route::post('users/store', [RegisteredUserController::class, 'store']);
-Route::get('/login', [AuthenticatedSessionController::class, 'store']);
-Route::post('users/destroy', [AuthenticatedSessionController::class, 'destroy']);
 
-Route::get('/', [WorkController::class, 'index']);
-Route::post('/workstart/{user_id}', [WorkController::class, 'workstart']);
-Route::post('/workend/{user_id}', [WorkController::class, 'workend']);
-Route::post('/breakstart/{work_id}', [WorkController::class, 'breakstart']);
-Route::post('/breakend/{work_id}', [WorkController::class, 'breakend']);
-Route::get('/attendance', [WorkController::class, 'attendance']);
-Route::post('/attendance', [WorkController::class, 'attendance']);
-
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+require __DIR__.'/auth.php';
+Route::get('/register',[RegisteredUserController::class,'create']);
+Route::post('/register',[RegisteredUserController::class,'store']);
+Route::get('/login',[AuthenticatedSessionController::class,'store']);
+Route::post('/login',[AuthenticatedSessionController::class,'destroy']);
+Route::get('/',[WorkController::class,'index']);
+Route::post('/workstart',[WorkController::class,'workstart']);
+Route::post('/workend',[WorkController::class,'workend']);
+Route::post('/breakstart',[WorkController::class,'breakstart']);
+Route::post('/breakend',[WorkController::class,'breakend']);
+Route::get('/attendance',[WorkController::class,'attendance']);
+Route::get('/auth', [AuthorController::class,'check']);
+Route::post('/auth', [AuthorController::class,'checkUser']);
+Route::get('/home', [AuthorController::class, 'index'])->middleware('auth');

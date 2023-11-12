@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
-use App\Models\Users;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegisteredUserController extends Controller
 {
