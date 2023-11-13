@@ -5,16 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\WorkRequest;
 use App\Models\Work;
 use App\Models\User;
-use App\Models\Break;
 use Illuminate\Support\Facades\Auth;
 
 class WorkController extends Controller
 {
     public function index(){
-      $user = Auth::user();
-  $authors = Author::paginate(4);
-  $param = ['authors' => $authors, 'user' =>$user];
-  return view('index', $param);
+
+  return view('index');
   }
 
     public function attendance(){
