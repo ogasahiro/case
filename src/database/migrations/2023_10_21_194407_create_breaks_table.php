@@ -17,7 +17,7 @@ class CreateBreaksTable extends Migration
             $table->id()->unique();
             $table->time('breakstart');
             $table->time('breakend');
-            $table->foreign('works_id')->constrained()->cascadeOnDelete();
+            $table->foreign('work_id')->constrained()->cascadeOnDelete();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

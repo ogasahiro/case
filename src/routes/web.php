@@ -25,10 +25,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
-Route::get('/register',[RegisteredUserController::class,'create']);
-Route::post('/register',[RegisteredUserController::class,'store']);
-Route::get('/login',[AuthenticatedSessionController::class,'store']);
-Route::post('/login',[AuthenticatedSessionController::class,'destroy']);
+
 Route::get('/',[WorkController::class,'index']);
 Route::post('/workstart',[WorkController::class,'workstart']);
 Route::post('/workend',[WorkController::class,'workend']);

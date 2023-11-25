@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\WorkRequest;
+use Illuminate\Http\Request;
 use App\Models\Work;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 
 class WorkController extends Controller
 {
@@ -16,26 +18,32 @@ class WorkController extends Controller
 
     public function attendance(){
 
-    return view('attendance');
+      $authors = Author::Paginate(5);
+      return view('attendance', ['authors' => $authors]);
   }
 
     public function workstart(Request $request){
-  $work -> workstart = Carbon::now()->format('H:i');
-  $work -> worktime = Carbon::now()->format('Y-m-d');
-  $work -> user_id = Auth::id();
-  $work -> save();
-  
-  return redirect('attendance', ['work' => $work]);
+      $user = Auth::user();
 
-}
-public function workend(Request $request){
-  $work -> workend = Carbon::now()->format('H:i');
-  $work -> user_id = Auth::id();
-  $work -> save();
+      $work = Work::create([
+       'user_id' => $user->id,
+       'workstart' => Carbon::now()->format('H:i'),
+       'worktime' => Carbon::now()->format('Y-m-d'),
+        ]);
+      return redirect()->back();
   
-  return redirect('attendance',['work' => $work]);
 }
-public function breakstart(Request $request){
+public function workend(){
+
+  $user = Auth::user();
+  $work = Work::create([
+       'user_id' => $user->id,
+       'workend' => Carbon::now()->format('H:i'),
+        ]);
+      return redirect()->back();
+}
+public function breakstart(){
+  
   $break -> breakstart = Carbon::now()->format('H:i');
   $break -> breaktime = Carbon::now()->format('Y-m-d');
   $break -> work_id = Work::id();

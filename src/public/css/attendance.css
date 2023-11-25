@@ -1,59 +1,27 @@
-.todo-table {
-  margin: 30px auto;
-  width: 70%;
-  text-align: center;
+.attendance-table {
+  
 }
 
-.todo-table__inner {
+.attendance-table__inner {
+  margin: 0 auto;
+  padding: 20px 15px;
   width: 100%;
 }
-
-.todo-table__row {
-  border-bottom: 1px solid #ddd;
-  margin-bottom:8px;
+.attendance-table__row {
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.attendance-table__header {
   padding: 10px;
+  background: #e9faf9;
+  border: solid 1px #778ca3;
+}
+.attendance-table__item{
+  padding: 10px;
+  border: solid 1px #778ca3;
 }
 
-.todo-table__header {
-  padding: 12px;
-  width: 20%;
-  text-align: left;
-  font-weight: bold;
-  border-top: solid 1px #c8c8c8;
-  border-bottom:solid 1px #c8c8c8 ;
-  padding-bottom:20px;
-  padding-top:20px;
-  margin-bottom: 20px;
-}
-
-.todo-table__header-span {
-   margin-right: 15%;
- }
-
-.todo-table__item:first-of-type {
-  padding: 12px;
-  width: 90%;
-}
-
-.update-form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.update-form__item {
-   width: 40%;
-  line-height: 50%;
-}
-
-.update-form__item-input {
-  border: none;
-}
-
- .update-form__item-p {
-     text-align: left;
-     font-size: 13px;
- }
   footer{
     padding-top: 10px;
     padding-bottom: 10px;
