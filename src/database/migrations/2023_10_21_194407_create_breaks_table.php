@@ -15,9 +15,9 @@ class CreateBreaksTable extends Migration
     {
         Schema::create('breaks', function (Blueprint $table) {
             $table->id()->unique();
-            $table->time('breakstart');
-            $table->time('breakend');
-            $table->foreign('work_id')->constrained()->cascadeOnDelete();
+            $table->time('breakstart')->nullable();
+            $table->time('breakend')->nullable();
+            $table->foreignId('work_id')->constrained()->cascadeOnDelete();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

@@ -15,25 +15,25 @@
        <th class="attendance-table__header">勤務時間</th>
       </tr>
       <tr class="attendance-table__row">
-      @foreach ($authors as $author)
+      @foreach ($works as $work)
        <td class="attendance-table__item">
-        {{$author->getDetail()}}
+        {{$work->getDetail()}}
        </td>
        <td class="attendance-table__item">
-        {{$author->getDetail()}}
+        {{$work->getDetail()}}
        </td>
        <td class="attendance-table__item">
-        {{$author->getDetail()}}
+        {{$work->getDetail()}}
        </td>
        <td class="attendance-table__item">
-        {{$author->getDetail()}}
+        {{$work->getDetail()}}
        </td>
        <td class="attendance-table__item">
-        {{$author->getDetail()}}
+        {{$work->getDetail()}}
        </td>
     </tr>
     @endforeach
   </table>
-  {{ $authors->links() }}
+  {{ $works->links() }}
 </div>
 @endsection
